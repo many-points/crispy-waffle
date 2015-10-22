@@ -19,11 +19,11 @@ body {
   margin-bottom: 10px; }
   /* line 32, ../sass/style.scss */
   .navbar .navbar-inner {
-    -webkit-border-radius: 0px 0px 3px 3px;
-    -moz-border-radius: 0px 0px 3px 3px;
-    -ms-border-radius: 0px 0px 3px 3px;
-    -o-border-radius: 0px 0px 3px 3px;
-    border-radius: 0px 0px 3px 3px; }
+    -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -ms-border-radius: 0px 0px 0px 0px;
+    -o-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px; }
 
 #spinner {
   height: 300px; }
