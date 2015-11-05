@@ -9,6 +9,14 @@ Template.postItem.helpers({
   },
   commentsCount: function () {
     return this.commentsCount;
+  },
+  buttonClass: function () {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.upvoters, userId)) {
+      return 'btn-primary upvote';
+    } else {
+      return 'btn-default disabled';
+    }
   }
 });
 
