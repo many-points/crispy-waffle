@@ -13,12 +13,28 @@ Template.postItem.helpers({
   commentsCount: function () {
     return this.commentsCount;
   },
-  buttonClass: function () {
+  upvoteButtonClass: function () {
     var userId = Meteor.userId();
-    if (userId && !_.include(this.upvoters, userId)) {
-      return 'btn-primary upvote';
+    if (userId && !_.include(this.voters, userId)) {
+      return 'btn-warning upvote';
     } else {
       return 'btn-default disabled';
+    }
+  },
+  downvoteButtonClass: function () {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.voters, userId)) {
+      return 'btn-info downvote';
+    } else {
+      return 'btn-default disabled';
+    }
+  },
+  arrow: function () {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.voters, userId)) {
+      return "\u2b06";
+    } else {
+      return "\u2b04";
     }
   },
   attributes: function() {
@@ -44,5 +60,9 @@ Template.postItem.events({
   'click .upvote': function(e) {
     e.preventDefault();
     Meteor.call('upvote', this._id);
+  },
+  'click .downvote': function(e) {
+    e.preventDefault();
+    Meteor.call('downvote', this._id);
   }
 });

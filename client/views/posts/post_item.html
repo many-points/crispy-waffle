@@ -1,6 +1,7 @@
 <template name="postItem">
   <div class="post" {{attributes}}>
-    <a href="#" style="font-weight:900;margin-top:7px;margin-right:12px;" class="btn pull-left {{buttonClass}}">&#x2b06;</a>
+    <a href="#" style="font-size:1em;font-weight:900;margin-top:7px;margin-right:4px;" class="btn pull-left {{upvoteButtonClass}}">&#x2b06;</a>
+    <a href="#" style="font-size:1em;font-weight:900;margin-top:7px;margin-right:12px;" class="btn pull-left {{downvoteButtonClass}}">&#x2b07;</a>
     <div class="post-content">
       <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
       <small>
