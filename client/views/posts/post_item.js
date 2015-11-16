@@ -13,9 +13,12 @@ Template.postItem.helpers({
   commentsCount: function () {
     return this.commentsCount;
   },
+  votesCount: function () {
+    return this.upvotes - this.downvotes;
+  },
   upvoteButtonClass: function () {
     var userId = Meteor.userId();
-    if (userId && !_.include(this.voters, userId)) {
+    if (userId && !_.include(this.upvoters, userId)) {
       return 'btn-warning upvote';
     } else {
       return 'btn-default disabled';
@@ -23,7 +26,7 @@ Template.postItem.helpers({
   },
   downvoteButtonClass: function () {
     var userId = Meteor.userId();
-    if (userId && !_.include(this.voters, userId)) {
+    if (userId && !_.include(this.downvoters, userId)) {
       return 'btn-info downvote';
     } else {
       return 'btn-default disabled';
