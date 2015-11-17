@@ -16,6 +16,12 @@ Template.postItem.helpers({
   votesCount: function () {
     return this.upvotes - this.downvotes;
   },
+  upvotesCount: function () {
+    return this.upvotes;
+  },
+  downvotesCount: function () {
+    return this.downvotes;
+  },
   upvoteButtonClass: function () {
     var userId = Meteor.userId();
     if (userId && !_.include(this.upvoters, userId)) {
@@ -30,14 +36,6 @@ Template.postItem.helpers({
       return 'btn-info downvote';
     } else {
       return 'btn-default disabled';
-    }
-  },
-  arrow: function () {
-    var userId = Meteor.userId();
-    if (userId && !_.include(this.voters, userId)) {
-      return "\u2b06";
-    } else {
-      return "\u2b04";
     }
   },
   attributes: function() {
