@@ -38,6 +38,14 @@ Template.postItem.helpers({
       return 'btn-default disabled';
     }
   },
+  buttonClass: function (action) {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this[action ? 'upvoters' : 'downvoters'], userId)) {
+      return action ? 'btn-warning upvote' : 'btn-info downvote';
+    } else {
+      return 'btn-default disabled';
+    }
+  },
   attributes: function() {
     var post = _.extend({}, Positions.findOne({postId: this._id}), this);
     var newPosition = post._rank * POST_HEIGHT;
@@ -60,10 +68,10 @@ Template.postItem.helpers({
 Template.postItem.events({
   'click .upvote': function(e) {
     e.preventDefault();
-    Meteor.call('upvote', this._id);
+    Meteor.call('vote', this._id, true);
   },
   'click .downvote': function(e) {
     e.preventDefault();
-    Meteor.call('downvote', this._id);
+    Meteor.call('vote', this._id, false);
   }
 });
