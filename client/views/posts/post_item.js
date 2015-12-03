@@ -13,37 +13,25 @@ Template.postItem.helpers({
   commentsCount: function () {
     return this.commentsCount;
   },
-  votesCount: function () {
-    return this.upvotes - this.downvotes;
-  },
-  upvotesCount: function () {
-    return this.upvotes;
-  },
-  downvotesCount: function () {
-    return this.downvotes;
-  },
-  upvoteButtonClass: function () {
-    var userId = Meteor.userId();
-    if (userId && !_.include(this.upvoters, userId)) {
-      return 'btn-warning upvote';
-    } else {
-      return 'btn-default disabled';
-    }
-  },
-  downvoteButtonClass: function () {
-    var userId = Meteor.userId();
-    if (userId && !_.include(this.downvoters, userId)) {
-      return 'btn-info downvote';
-    } else {
-      return 'btn-default disabled';
-    }
-  },
   buttonClass: function (action) {
     var userId = Meteor.userId();
-    if (userId && !_.include(this[action ? 'upvoters' : 'downvoters'], userId)) {
-      return action ? 'btn-warning upvote' : 'btn-info downvote';
-    } else {
-      return 'btn-default disabled';
+
+    if (action === "upvote") {
+
+      if (!_.contains(this.upvoters, userId)) {
+        return "btn-warning upvote";
+      } else {
+        return "btn-default disabled";
+      }
+
+    } else if (action === "downvote") {
+
+      if (!_.contains(this.downvoters, userId)) {
+        return "btn-info downvote";
+      } else {
+        return "btn-default disabled";
+      }
+
     }
   },
   attributes: function() {
@@ -68,10 +56,10 @@ Template.postItem.helpers({
 Template.postItem.events({
   'click .upvote': function(e) {
     e.preventDefault();
-    Meteor.call('vote', this._id, true);
+    Meteor.call('vote', this._id, 'upvote');
   },
   'click .downvote': function(e) {
     e.preventDefault();
-    Meteor.call('vote', this._id, false);
+    Meteor.call('vote', this._id, 'downvote');
   }
 });

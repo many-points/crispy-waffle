@@ -1,11 +1,13 @@
 <template name="postItem">
   <div class="post" {{attributes}}>
-    <a href="#" style="font-size:1em;font-weight:900;margin-top:7px;margin-right:4px;" class="btn pull-left {{buttonClass true}}">&#x2b06;</a>
-    <a href="#" style="font-size:1em;font-weight:900;margin-top:7px;margin-right:12px;" class="btn pull-left {{buttonClass false}}">&#x2b07;</a>
+    <a href="#" style="font-size:1em; font-weight:900; margin-top:7px; margin-right:4px;"
+      class="btn pull-left {{buttonClass 'upvote'}}">&#x2b06;</a>
+    <a href="#" style="font-size:1em; font-weight:900; margin-top:7px; margin-right:12px;"
+      class="btn pull-left {{buttonClass 'downvote'}}">&#x2b07;</a>
     <div class="post-content">
       <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
       <small>
-        {{pluralize votesCount "vote"}},
+        {{pluralize votes "vote"}},
         submitted by {{author}},
         <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "comment"}}</a>
         {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}

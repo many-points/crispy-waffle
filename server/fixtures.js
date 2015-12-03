@@ -20,8 +20,7 @@ if (Posts.find().count() === 0) {
     commentsCount: 2,
     upvoters: [],
     downvoters: [],
-    upvotes: 0,
-    downvotes: 0
+    votes: 0
   });
 
   Comments.insert({
@@ -49,8 +48,7 @@ if (Posts.find().count() === 0) {
     commentsCount: 0,
     upvoters: [],
     downvoters: [],
-    upvotes: 0,
-    downvotes: 0
+    votes: 0
   });
 
   Posts.insert({
@@ -62,8 +60,7 @@ if (Posts.find().count() === 0) {
     commentsCount: 0,
     upvoters: [],
     downvoters: [],
-    upvotes: 0,
-    downvotes: 0
+    votes: 0
   });
 
   for (var i = 0; i < 10; i++) {
@@ -76,8 +73,7 @@ if (Posts.find().count() === 0) {
       commentsCount: 0,
       upvoters: [],
       downvoters: [],
-      upvotes: 0,
-      downvotes: 0
+      votes: 0
     });
   };
 }
